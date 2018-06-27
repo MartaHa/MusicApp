@@ -14,32 +14,30 @@ import pl.coderslab.spotify.services.UserService;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/user")
-public class UserController {
-
-
+@RequestMapping("/admin")
+public class AdminController {
     private final UserRepository userRepository;
     private final UserService userService;
 
-    public UserController(UserRepository userRepository, UserService userService) {
+    public AdminController(UserRepository userRepository, UserService userService) {
         this.userRepository = userRepository;
         this.userService = userService;
     }
 
     //add
-    @GetMapping("/add")
+    @GetMapping("/addAdmin")
     public String showFormUser(Model model) {
         model.addAttribute("user", new User());
-        return "user/register";
+        return "admin/registerAdmin";
     }
 
-    @PostMapping("/add")
+    @PostMapping("/addAdmin")
 
     public String perform(@ModelAttribute @Valid User user, String role, BindingResult result) {
         if (result.hasErrors()) {
-            return "user/register";
+            return "admin/registerAdmin";
         }
-        userService.saveUser(user, "ROLE_USER");
+        userService.saveUser(user, "ROLE_ADMIN");
         return "redirect:/login";
 
     }

@@ -7,18 +7,11 @@
 </head>
 <body>
 <h1>Form</h1>
-<form action="#" th:action="@{/user/add}" th:object="${user}" method="post">
+<form action="#" th:action="@{/admin/addAdmin}" th:object="${user}" method="post">
     <p>User Name: <input type="text" th:field="*{username}" /></p>
     <p>Password: <input type="text" th:field="*{password}" /></p>
     <p>Email: <input type="text" th:field="*{email}" /></p>
     <p>Confirm your email: <input type="text" th:field="*{validEmail}" /></p>
-    <p>Name: <input type="text" th:field="*{name}" /></p>
-    <p>Date of Birth: <input type="text" th:field="*{dateOfBirth}" /></p>
-    <p>Gender:</p>
-    <p> Male <input type="radio" th:field="*{gender}" value="Male"/> Female <input type="radio" th:field="*{gender}" value="Female"/> </p>
-    <p> Accept privacy policy <input type="checkbox" th:field="*{privacyPolicy}" /> </p>
-
-
 
     <p><input type="submit" value="Submit" /></p>
     <p> Already have an account?  <a th:href="@{/login}"> Log in</a></p>
