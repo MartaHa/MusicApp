@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void saveUser(User user,String role) {
+    public void saveUser(User user, String role) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setEnabled(1);
         Role userRole = roleRepository.findByName(role);
@@ -39,4 +39,3 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
     }
 }
-

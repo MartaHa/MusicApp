@@ -7,7 +7,6 @@ import javax.persistence.*;
 import java.util.Set;
 @Getter
 @Setter
-
 @javax.persistence.Entity(name = "users")
 public class User {
 

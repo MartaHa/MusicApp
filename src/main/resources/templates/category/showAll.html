@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>List of Categories</h3>
+<p> Add a category: <a th:href="@{/category/add}"> ADD </a></p>
+<table>
+    <tr>
+        <th th:text="'Id'"> </th>
+        <th th:text="'Category'"> </th>
+        <th th:text="'DETAILS:'"> </th>
+
+    </tr>
+
+
+    <tr th:each="category: ${categories}">
+        <td th:text="${category.id}"></td>
+        <td th:text="${category.name}"></td>
+        <td>  <a th:href="@{/category/showOne/{id}/(id=${category.id})}"> ShowDetails </a></td>
+
+    </tr>
+</table>
+<a th:href="@{/home}"> Back to Main Page </a>
+</body>
+</html>
