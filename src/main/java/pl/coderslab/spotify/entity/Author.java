@@ -16,6 +16,11 @@ public class Author {
     private Long id;
     private String name;
     private String surname;
+    private String fullName;
+
+    public void setFullName(String fullName) {
+        this.fullName = this.name + this.surname;
+    }
 
     @ManyToMany
     private List<Song> songs;

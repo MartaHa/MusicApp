@@ -2,6 +2,7 @@ package pl.coderslab.spotify.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import javax.persistence.*;
 import java.util.List;
@@ -14,10 +15,12 @@ public class Song {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String title;
     private int rating;
 
     @ManyToOne
     private Category category;
+
 
     @ManyToMany
     private List<Author> author;

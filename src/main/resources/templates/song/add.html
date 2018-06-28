@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<h1>Add a song</h1>
+<form th:action="@{song/add}" th:object="${song}" method="post">
+    <p><input type="hidden" th:value="*{id}"/></p>
+    <p>Title: <input type="text" th:field="*{title}" /></p>
+    <select th:field="*{authors}"/>
+    <option th:each="author : ${authors}" th:value="${authors.fullname}"></option>
+    <p><input type="submit" value="Submit" /></p>
+</form>
+</body>
+</html>
