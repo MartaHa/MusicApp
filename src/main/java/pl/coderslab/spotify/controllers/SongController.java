@@ -7,19 +7,29 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import pl.coderslab.spotify.entity.Author;
+import pl.coderslab.spotify.entity.Category;
 import pl.coderslab.spotify.entity.Song;
+import pl.coderslab.spotify.repository.AuthorRepository;
+import pl.coderslab.spotify.repository.CategoryRepository;
 import pl.coderslab.spotify.repository.SongRepository;
 
 import javax.validation.Valid;
+import java.util.Collection;
+import java.util.List;
 
 @Controller
 @RequestMapping("/song")
 public class SongController {
 
     private final SongRepository songRepository;
+    private final AuthorRepository authorRepository;
+    private final CategoryRepository categoryRepository;
 
-    public SongController(SongRepository songRepository) {
+    public SongController(SongRepository songRepository, AuthorRepository authorRepository, CategoryRepository categoryRepository) {
         this.songRepository = songRepository;
+        this.authorRepository = authorRepository;
+        this.categoryRepository = categoryRepository;
     }
 
     //add
@@ -40,6 +50,23 @@ public class SongController {
         return "redirect:/listSongs";
 
     }
+
+    //addAuthor
+
+    @ModelAttribute("authors")
+    public Collection<Author> populateAuthors() {
+        List<Author> authors = authorRepository.findAll();
+        return authors;
+    }
+
+//addCategoryToSong
+
+    @ModelAttribute("categories")
+    public Collection<Category> populateCategories() {
+        List<Category> categories = categoryRepository.findAll();
+        return categories;
+    }
+
 
     //listOfSongs
 

@@ -16,13 +16,25 @@ public class Author {
     private Long id;
     private String name;
     private String surname;
+    @Transient
     private String fullName;
 
-    public void setFullName(String fullName) {
-        this.fullName = this.name + this.surname;
+    public String getFullName() {
+        return name + " " + surname;
     }
+
 
     @ManyToMany
     private List<Song> songs;
+
+    //SelectCorrection
+    public boolean isSelected(Integer authorId){
+        if (authorId != null) {
+            return authorId.equals(id);
+        }
+        return false;
+    }
+
+
 
 }
