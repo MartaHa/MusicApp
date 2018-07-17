@@ -10,11 +10,11 @@
     <tr>
         <th></th>
         <th th:text="'Username'"></th>
+        <th th:text="'First Name'"></th>
+        <th th:text="'Last Name'"></th>
         <th th:text="'Password'"></th>
         <th th:text="'Email'"></th>
-        <th th:text="'Name'"></th>
         <th th:text="'Date of Birth'"></th>
-        <th th:text="'Gender'"></th>
         <th th:text="'UPDATE'"></th>
         <th th:text="''"></th>
 
@@ -23,16 +23,15 @@
     <tr th:each="user1: ${user}">
 
         <td th:text="${user1.username}"></td>
+        <td th:text="${user1.firstName}"></td>
+        <td th:text="${user1.lastName}"></td>
         <td th:text="${user1.password}"></td>
         <td th:text="${user1.email}"></td>
-        <td th:text="${user1.name}"></td>
         <td th:text="${user1.dateOfBirth}"></td>
-        <td th:text="${user1.gender}"></td>
         <td><p><a th:href="@{/user/update/{id}/(id=${user1.id})}"> UPDATE </a></p></td>
 
     </tr>
 </table>
-
 </form>
 </body>
 </html>

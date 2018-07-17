@@ -1,16 +1,6 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h3 th:text="'Register:'"></h3></br>
-<a th:href="@{/add}"> Register</a>
-<h3 th:text="'Already have an account?'"></h3>
-<a th:href="@{/login}"> Log in</a>
-<h3 th:text="'Im an admin'"></h3>
-<a th:href="@{/registerAdmin}"> Sign as an admin </a>
-</body>
-</html>
+<div>
+    <label th:for="firtName">First Name</label>
+    <p th:input type="firstName" placeholder="firstName">
+        <input th:field="*{firstName}"/>
+    <p th:errors="*{firstName}"></p>
+</div>
