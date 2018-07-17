@@ -3,10 +3,7 @@ package pl.coderslab.spotify.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.spotify.entity.Author;
 import pl.coderslab.spotify.repository.AuthorRepository;
 
@@ -51,4 +48,23 @@ public class AuthorController {
         return "author/showAll";
     }
 
+
+
+    //updateAuthor
+
+    @GetMapping("/update/{id}")
+    public String updateAuthor(Model model, @PathVariable long id) {
+        model.addAttribute("author", authorRepository.findById(id));
+        return "author/updateAuthor";
+    }
+
+    @PostMapping("/update")
+    public String performUpdate(@ModelAttribute @Valid Author author, BindingResult result) {
+        if (result.hasErrors()) {
+            return "author/updateAuthor";
+        }
+        authorRepository.save(author);
+        return "redirect:/author/showAll";
+
+    }
 }

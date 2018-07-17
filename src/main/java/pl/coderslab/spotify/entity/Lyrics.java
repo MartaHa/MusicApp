@@ -11,8 +11,8 @@ import javax.persistence.*;
 public class Lyrics {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idd;
     private String songtext;
     @OneToOne
     private Song song;

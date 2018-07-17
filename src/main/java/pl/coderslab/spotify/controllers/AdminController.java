@@ -4,10 +4,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.spotify.entity.User;
 import pl.coderslab.spotify.repository.UserRepository;
 import pl.coderslab.spotify.services.CurrentUser;
@@ -26,35 +23,29 @@ public class AdminController {
         this.userService = userService;
     }
 
-    //add
-    @GetMapping("/addAdmin")
-    public String showFormUser(Model model) {
-        model.addAttribute("user", new User());
-        return "admin/registerAdmin";
-    }
 
-    @PostMapping("/addAdmin")
-
-    public String perform(@ModelAttribute @Valid User user, String role, BindingResult result) {
-        if (result.hasErrors()) {
-            return "admin/registerAdmin";
-        }
-        userService.saveUser(user, "ROLE_ADMIN");
-        return "redirect:/login";
-
-    }
 
     //updateAdmin
     @GetMapping("/update")
     public String showFormUser(Model model, @AuthenticationPrincipal CurrentUser customUser) {
         model.addAttribute("user", customUser.getUser());
-        return "admin/updateUser";
+        return "admin/update";
     }
 
     @PostMapping("/update")
-    public String performUpdate(@ModelAttribute User user) {
+    public String performUpdate(@ModelAttribute User user, @AuthenticationPrincipal CurrentUser customUser) {
         userRepository.save(user);
-        return "redirect:/showUser";
+        return "redirect:/welcomeAd";
+    }
+
+    //showUser
+
+    @GetMapping("/showUser")
+
+    public String showOne(Model model, @RequestParam Long id) {
+        model.addAttribute("users", userRepository.getOne(id));
+        return "user/showUser";
+
     }
 
 }

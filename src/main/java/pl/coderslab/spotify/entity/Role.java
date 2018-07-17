@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+
 @Entity
 @Table(name = "role")
 @Getter
@@ -16,8 +17,4 @@ public class Role {
     private int id;
     @Column(name = "role")
     private String name;
-
-
-
 }
-

@@ -6,9 +6,9 @@
     <title>$Title$</title>
 </head>
 <body>
-<h1>Add an author</h1>
+<h1>Update information </h1>
 <div class="card-body">
-    <form th:action="@{/author/add}" method="post" th:object="${author}">
+    <form th:action="@{/author/update}" method="post" th:object="${author}">
         <div>
             <label th:for="name"> Name</label>
             <p th:input type="text" placeholder=" Name">
@@ -26,5 +26,8 @@
     </form>
 </div>
 </div>
+</form>
+<div>
+<a th:href="@{/author/showAll}"> Back to List </a>
 </body>
 </html>

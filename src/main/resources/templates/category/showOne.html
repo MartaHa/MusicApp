@@ -9,13 +9,13 @@
 <h3>Category Details</h3>
 <table>
     <tr>
-        <th th:text="'Id'"> </th>
-        <th th:text="'Category'"> </th>
-        <th th:text="'Summary'"> </th>
-        <th th:text="'Created'"> </th>
-        <th th:text="'Updated'"> </th>
-        <th th:text="'UPDATE:'"> </th>
-        <th th:text="'DELETE:'"> </th>
+        <th th:text="'Id'"></th>
+        <th th:text="'Category'"></th>
+        <th th:text="'Summary'"></th>
+        <th th:text="'Created'"></th>
+        <th th:text="'Updated'"></th>
+        <th th:text="'UPDATE:'"></th>
+        <th th:text="'DELETE:'"></th>
 
     </tr>
 
@@ -26,11 +26,13 @@
         <td th:text="${category.summary}"></td>
         <td th:text="${category.created}"></td>
         <td th:text="${category.updated}"></td>
-        <td>  <a th:href="@{/category/update/{id}/(id=${category.id})}"> Update </a></td>
-        <td>  <a th:href="@{/category/delete/{id}/(id=${category.id})}"> Delete </a></td>
+        <td><a th:href="@{/category/update/{id}/(id=${category.id})}"> Update </a></td>
+        <td><a th:href="@{/category/delete/{id}/(id=${category.id})}"> Delete </a></td>
 
     </tr>
 </table>
-<a th:href="@{/home}"> Back to Main Page </a>
+<div>
+    <a th:href="@{/welcomeAd}"> Back to Main Page </a>
+</div>
 </body>
 </html>

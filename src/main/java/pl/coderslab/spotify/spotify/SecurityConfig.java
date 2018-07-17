@@ -22,7 +22,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     DataSource dataSource;
 
-    //password code/decdode
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -33,35 +32,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new SpringDataUserDetailsService();
     }
 
-//    @Override
-    public void addFormatters(FormatterRegistry registry) {
-        registry.addConverter(getAuthorConverter());
-    }
-    @Bean
-    public AuthorConverter getAuthorConverter() {
-        return new AuthorConverter();
-    }
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("user/register","admin/mainAdmin").hasAnyRole("USER","ADMIN")
-                .antMatchers("/admin/mainAdmin").hasAnyRole("ADMIN")
-                .antMatchers("/user/mainUser").hasAnyRole("USER")
+                .antMatchers("/admin/**").hasAnyRole("ADMIN")
+                .antMatchers("/user/**").hasAnyRole("USER")
                 .anyRequest().permitAll()
-                .and().formLogin()
-                .loginPage("/login")
-                .defaultSuccessUrl("/checkrole")
-                .and().logout().logoutSuccessUrl("/goodbye")
+                .and().formLogin().loginPage("/login").defaultSuccessUrl("/checkrole")
+                .and().logout().logoutSuccessUrl("/logout")
                 .permitAll()
                 .and().exceptionHandling().accessDeniedPage("/403");
     }
-
-    //    @Override
-    public void addViewControllers(ViewControllerRegistry registry) {
-        //  registry.addViewController("/login").setViewName("admin/login");
-        registry.addViewController("/403").setViewName("403");
-    }
-
-
 }

@@ -12,11 +12,12 @@ import java.util.List;
 public class Author {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
     private String surname;
-    @Transient
+
     private String fullName;
 
     public String getFullName() {
@@ -27,13 +28,7 @@ public class Author {
     @ManyToMany
     private List<Song> songs;
 
-    //SelectCorrection
-    public boolean isSelected(Integer authorId){
-        if (authorId != null) {
-            return authorId.equals(id);
-        }
-        return false;
-    }
+
 
 
 

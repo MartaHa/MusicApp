@@ -7,12 +7,25 @@
 </head>
 <body>
 <h1>Form</h1>
-<form action="#" th:action="@{/category/add}" th:object="${category}" method="post">
-    <p><input type="hidden" th:value="*{id}"/></p>
-    <p>Name of the Category: <input type="text" th:field="*{name}" /></p>
-    <p>Summary: <input type="text" th:field="*{summary}" /></p>
-    <p><input type="submit" value="Submit" /></p>
+<div class="card-body">
+    <form th:action="@{/category/add}" method="post" th:object="${category}">
+        <div>
+            <label th:for="name"> Name</label>
+            <p th:input type="text" placeholder=" Name">
+                <input th:field="*{name}"/>
+            <p th:errors="*{name}"></p>
+        </div>
+        <div>
+            <label th:for="summary">Summary</label>
+            <p th:input type="summary" placeholder="summary">
+                <input th:field="*{summary}"/>
+            <p th:errors="*{summary}"></p>
+        </div>
+        <input type="hidden" th:field="*{id}"/>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+</div>
     <a th:href="@{/category/showAll}"> Back to List </a>
-</form>
 </body>
 </html>

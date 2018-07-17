@@ -22,10 +22,10 @@
         <td th:text="${author.id}"></td>
         <td th:text="${author.name}"></td>
         <td th:text="${author.surname}"></td>
-        <td>  <a th:href="@{/author/showOne/{id}/(id=${author.id})}"> ShowDetails </a></td>
+        <td>  <a th:href="@{/author/update/{id}/(id=${author.id})}"> Update </a></td>
 
     </tr>
 </table>
-<a th:href="@{/home}"> Back to Main Page </a>
+<a th:href="@{/welcomeAd}"> Back to Main Page </a>
 </body>
 </html>

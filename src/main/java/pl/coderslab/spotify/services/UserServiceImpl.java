@@ -8,6 +8,7 @@ import pl.coderslab.spotify.entity.User;
 import pl.coderslab.spotify.repository.RoleRepository;
 import pl.coderslab.spotify.repository.UserRepository;
 
+import javax.transaction.Transactional;
 import java.util.Arrays;
 import java.util.HashSet;
 
@@ -40,5 +41,10 @@ public class UserServiceImpl implements UserService {
     }
 
 
+    public void updateUser(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+
+        userRepository.save(user);
+    }
 
 }

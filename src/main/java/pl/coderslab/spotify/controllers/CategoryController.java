@@ -70,8 +70,7 @@ public class CategoryController {
 
     @GetMapping("/update/{id}")
     public String showForm(Model model, @PathVariable long id) {
-        Category c = categoryRepository.getOne(id);
-        model.addAttribute("category", c);
+        model.addAttribute("category", categoryRepository.findById(id));
         return "category/update";
     }
 

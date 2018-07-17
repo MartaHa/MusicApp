@@ -25,29 +25,13 @@ public class UserController {
         this.userService = userService;
     }
 
-    //add
-    @GetMapping("/add")
-    public String showFormUser(Model model) {
-        model.addAttribute("user", new User());
-        return "user/register";
-    }
 
-    @PostMapping("/add")
-
-    public String perform(@ModelAttribute @Valid User user, String role, BindingResult result) {
-        if (result.hasErrors()) {
-            return "user/register";
-        }
-        userService.saveUser(user, "ROLE_USER");
-        return "redirect:/login";
-
-    }
 
     //updateUser
-    @GetMapping("/update")
-    public String showFormUser(Model model, @AuthenticationPrincipal CurrentUser customUser) {
-        model.addAttribute("user", customUser.getUser());
-        return "user/updateUser";
+    @GetMapping("/update/{id}")
+    public String showFormUser(Model model, @PathVariable long id) {
+        model.addAttribute("user", userRepository.findById(id));
+        return "user/update";
     }
 
     @PostMapping("/update")
@@ -55,6 +39,13 @@ public class UserController {
         userRepository.save(user);
         return "redirect:/showUser";
     }
+    @GetMapping("/show")
 
+    public String showUser(@AuthenticationPrincipal CurrentUser customUser, Model model) {
+        User entityUser = customUser.getUser();
+        model.addAttribute("user", entityUser);
+        return "user/showUser";
+
+    }
 
 }
