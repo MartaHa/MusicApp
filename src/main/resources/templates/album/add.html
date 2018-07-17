@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$Title$</title>
+</head>
+<body>
+<h1>Add an Album</h1>
+<div class="card-body">
+    <form th:action="@{/album/add}" method="post" th:object="${albu,}">
+        <div>
+            <label th:for="title"> Title</label>
+            <p th:input type="text" placeholder=" Title">
+                <input th:field="*{title}"/>
+            <p th:errors="*{title}"></p>
+        </div>
+        <div>
+            <label th:for="yearOfRelease">Year of Release</label>
+            <p th:input type="yearOfRelease" placeholder="yearOfRelease">
+                <input th:field="*{yearOfRelease}"/>
+            <p th:errors="*{yearOfRelease}"></p>
+        </div>
+        <input type="hidden" th:field="*{id}"/>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+</div>
+</body>
+</html>

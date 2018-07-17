@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>List of Albums</h3>
+<p> Add an album: <a th:href="@{/album/add}"> ADD </a></p>
+<table>
+    <tr>
+        <th th:text="'Id'"> </th>
+        <th th:text="'Title'"> </th>
+        <th th:text="'Year of Release:'"> </th>
+        <th th:text="'UPDATE'"> </th>
+
+    </tr>
+
+
+    <tr th:each="album: ${albums}">
+        <td th:text="${album.id}"></td>
+        <td th:text="${album.title}"></td>
+        <td th:text="${album.yearOfRelease}"></td>
+        <td>  <a th:href="@{/album/update/{id}/(id=${album.id})}"> Update </a></td>
+
+    </tr>
+</table>
+<div>
+    <a th:href="@{/welcomeAd}"> Back to Main Page </a>
+</div>
+</body>
+</html>

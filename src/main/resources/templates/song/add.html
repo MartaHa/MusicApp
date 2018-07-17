@@ -4,31 +4,54 @@
 <body>
 
 <h1>Add a song</h1>
-<form th:action="@{song/add}" th:object="${song}" method="post">
 
-    <p><input type="hidden" th:value="*{id}"/></p>
-    <p> Title: <input type="text" th:value="*{title}"/></p>
-  <p> Select author:
-      <select class="form-control" name="author" id="author">
-        <option value="0">Authors</option>
-        <option th:each="author : ${authors}"
-                th:value="${author.id}"
-                th:text="${author.fullName}">
-        </option>
-    </select>
-</p>
-<p> Select category
-    <select class="form-control" name="category" id="category">
-        <option value="0">Categories</option>
-        <option th:each="category : ${categories}"
-                th:value="${category.id}"
-                th:text="${category.name}">
-        </option>
-    </select>
-</p>
-    <p><input type="submit" value="Submit" /></p>
-</form>
-
+<div>
+    <p>List of songs</p>
+    <a th:href="@{/song/listSongs}"> List </a>
+</div>
+<div class="card-body">
+    <form th:action="@{/song/add}" method="post" th:object="${song}">
+        <div>
+            <label th:for="title"> Title</label>
+            <p th:input type="text" placeholder=" title">
+                <input th:field="*{title}"/>
+            <p th:errors="*{title}"></p>
+        </div>
+        <div>
+            <label th:for="author">Choose author</label>
+            <select class="form-control" name="author">
+                <option value="0">Authors</option>
+                <option th:each="author : ${authors}"
+                        th:value="${author.id}"
+                        th:text="${author.fullName}">
+                </option>
+            </select>
+        </div>
+        <div>
+            <label th:for="category">Choose category:</label>
+            <select class="form-control" name="category" id="category">
+                <option value="0">Categories</option>
+                <option th:each="category : ${categories}"
+                        th:value="${category.id}"
+                        th:text="${category.name}">
+                </option>
+            </select>
+        </div>
+        <div>
+            <label th:for="album">Choose album:</label>
+            <select class="form-control" name="album" id="album">
+                <option value="0">Albums</option>
+                <option th:each="album : ${albums}"
+                        th:value="${album.id}"
+                        th:text="${album.title}">
+                </option>
+            </select>
+        </div>
+        <input type="hidden" th:field="*{id}"/>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+</div>
 <div>
     <a th:href="@{/welcomeAd}"> Back to Main Page </a>
 </div>

@@ -27,8 +27,7 @@ public class Category {
     private Long version;
 
 
-
-    @OneToMany
+    @ManyToMany
     private List<Song> songs;
 
     @PrePersist

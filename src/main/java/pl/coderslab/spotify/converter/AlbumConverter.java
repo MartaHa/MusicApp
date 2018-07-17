@@ -2,18 +2,19 @@ package pl.coderslab.spotify.converter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
+import pl.coderslab.spotify.entity.Album;
 import pl.coderslab.spotify.entity.Author;
+import pl.coderslab.spotify.repository.AlbumRepository;
 import pl.coderslab.spotify.repository.AuthorRepository;
-import pl.coderslab.spotify.repository.CategoryRepository;
 
-public class AuthorConverter implements Converter<String, Author> {
+public class AlbumConverter implements Converter<String, Album> {
 
     @Autowired
-    AuthorRepository authorRepository;
+    AlbumRepository albumRepository;
 
     @Override
-    public Author convert(String s) {
-        return authorRepository.getOne(Long.parseLong(s));
+    public Album convert(String s) {
+        return albumRepository.getOne(Long.parseLong(s));
     }
 }
 

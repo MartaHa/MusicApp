@@ -18,8 +18,8 @@ public class Song {
     private String title;
     private int rating;
 
-    @ManyToOne
-    private Category category;
+    @ManyToMany
+    private  List <Category> category;
 
 
     @ManyToMany

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>Song Details</h3>
+<table>
+    <tr>
+        <th th:text="'Id'"></th>
+        <th th:text="'Title'"></th>
+        <th th:text="''"></th>
+        <th th:text="'Created'"></th>
+        <th th:text="'Updated'"></th>
+        <th th:text="'UPDATE:'"></th>
+        <th th:text="'DELETE:'"></th>
+
+    </tr>
+
+
+    <tr th:each="cat: ${category}">
+        <td th:text="${category.id}"></td>
+        <td th:text="${category.name}"></td>
+        <td th:text="${category.summary}"></td>
+        <td th:text="${category.created}"></td>
+        <td th:text="${category.updated}"></td>
+        <td><a th:href="@{/category/update/{id}/(id=${category.id})}"> Update </a></td>
+        <td><a th:href="@{/category/delete/{id}/(id=${category.id})}"> Delete </a></td>
+
+    </tr>
+</table>
+<div sec:authorize="hasAuthority('ADMIN')">
+    <p> Back o Main<a th:href="@{/welcomeAd}"> Main </a>
+    </p>
+</div>
+<div sec:authorize="hasAuthority('USER')">
+    <p> Back o Main<a th:href="@{/welcome}"> Main </a>
+    </p>
+</div>
+</body>
+</html>
