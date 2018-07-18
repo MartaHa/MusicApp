@@ -9,10 +9,22 @@
 <h3> Hello user</h3>
 <h4> What do you want to do ? </h4>
 <th:ul>
-    <li> Search music by categories</li>
-    <li> Add your music preferences </li>
-    <li> Gimme the lyrics</li>
-    <li> Show my profile <a th:href="@{/user/show}"> Show my Profile </a> </li>
+    <li> Show all songs <a th:href="@{/song/listSongs}"> Songs </a></li>
+    <li> Search by category
+        <form action="/song/byCategory" , method="" post>
+            Search by category:
+            <input type="text" name="category">
+            <input type="submit" value="Search">
+        </form>
+    </li>
+    <li> Search by rating:
+        <form action="/song/byRating" , method="" post>
+            Search by rating:
+            <input type="text" name="rating">
+            <input type="submit" value="Search">
+        </form>
+    </li>
+    <li> Manage my profile <a th:href="@{/user/show}"> Show my Profile </a></li>
 </th:ul>
 
 </body>

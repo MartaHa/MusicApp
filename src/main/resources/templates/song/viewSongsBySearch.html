@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Search</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<table>
+    <tr>
+        <th th:text="'Title:'"></th>
+        <th th:text="'Author:'"></th>
+        <th th:text="'Album:'"></th>
+        <th th:text="'Lyric:'"></th>
+        <th th:text="'Rating:'"></th>
+
+    </tr>
+
+
+    <tr th:each="song: ${songs}">
+        <td th:text="${song.title}"></td>
+        <td><span th:each="author: ${song.author}">
+            <b th:text="${author.fullName}"/></span>
+        </td>
+        <td><span th:each="album: ${song.album}">
+            <b th:text="${album.title}"/></span>
+        </td>
+        <!--<td>-->
+        <!--<span th:each="lyric: ${song.lyrics}">-->
+        <!--<b th:text="${lyrics.text}"/>-->
+        <!--</span>-->
+        <!--&lt;!&ndash;</td>&ndash;&gt;-->
+        <!--<td>-->
+        <!--<td th:text="${song.rating}"/>-->
+        <!--</td>-->
+    </tr>
+
+</table>
+
+<a th:href="@{/welcome}"> Back to Main Page </a>

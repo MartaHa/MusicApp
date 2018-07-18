@@ -26,8 +26,8 @@ public class Category {
     @Version
     private Long version;
 
-
-    @ManyToMany
+    @OneToMany(cascade =
+            CascadeType.ALL)
     private List<Song> songs;
 
     @PrePersist

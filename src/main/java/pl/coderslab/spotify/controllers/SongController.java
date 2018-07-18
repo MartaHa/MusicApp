@@ -3,10 +3,7 @@ package pl.coderslab.spotify.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.spotify.entity.Album;
 import pl.coderslab.spotify.entity.Author;
 import pl.coderslab.spotify.entity.Category;
@@ -64,8 +61,6 @@ public class SongController {
     }
 
 
-
-
     //addAlbums
 
     @ModelAttribute("albums")
@@ -90,4 +85,16 @@ public class SongController {
         model.addAttribute("songs", songRepository.findAll());
         return "song/showAll";
     }
+
+
+//byCategory
+
+    @GetMapping("/byCategory")
+
+    public String findByCategory(@RequestParam String category, Model model) {
+        List<Song> songs = songRepository.findSongsbyCategory(category);
+        model.addAttribute("songs", songs);
+        return "song/viewSongsbySearch";
+    }
+
 }

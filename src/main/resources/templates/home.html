@@ -1,6 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$Title$</title>
+</head>
+<body>
 <div>
-    <label th:for="firtName">First Name</label>
-    <p th:input type="firstName" placeholder="firstName">
-        <input th:field="*{firstName}"/>
-    <p th:errors="*{firstName}"></p>
+    <p> Login</p>
+    <a th:href="@{/login}">LOGIN </a>
 </div>
+<div>
+    <p> I'm an user</p>
+    <a th:href="@{/add}"> USER </a>
+</div>
+<div>
+    <p> I'm an Admin</p>
+    <a th:href="@{/registerAdmin}"> ADMIN </a>
+</div>
+</body>
+</html>
