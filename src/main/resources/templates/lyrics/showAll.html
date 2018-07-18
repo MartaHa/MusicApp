@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>List of Lyrics</h3>
+<p> Add a lyric: <a th:href="@{/lyrics/add}"> ADD </a></p>
+<table>
+    <tr>
+        <th th:text="'Id'"> </th>
+        <th th:text="'Title'"> </th>
+        <th th:text="'Song Text'"> </th>
+        <th th:text="'DETAILS:'"> </th>
+
+    </tr>
+
+
+    <tr th:each="lyrics: ${allLyrics}">
+        <td th:text="${lyrics.id}"></td>
+        <td th:text="${lyrics.title}"></td>
+        <td th:text="${lyrics.songText}"></td>
+        <td>  <a th:href="@{/lyrics/showOne/{id}/(id=${lyrics.id})}"> ShowDetails </a></td>
+
+    </tr>
+</table>
+<div>
+    <a th:href="@{/welcomeAd}"> Back to Main Page </a>
+</div>
+</body>
+</html>

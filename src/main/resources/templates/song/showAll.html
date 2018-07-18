@@ -43,14 +43,14 @@
                                 <b th:text="${album.title}"/>
                             </span>
                 </td>
-                <!--<td>-->
-                <!--<span th:each="lyric: ${song.lyrics}">-->
-                <!--<b th:text="${lyrics.text}"/>-->
-                <!--</span>-->
-                <!--&lt;!&ndash;</td>&ndash;&gt;-->
-                <!--<td>-->
-                <!--<td th:text="${song.rating}"/>-->
+                <td>
+                <span th:each="lyric: ${song.lyrics}">
+                <b th:text="${lyrics.songText}"/>
+                </span>
                 <!--</td>-->
+                <td>
+                <td th:text="${song.rating}"/>
+                </td>
                 <td><a th:href="@{/song/showOne/{id}/(id=${song.id})}"> SHOWDETAILS </a></td>
                 <td><a th:href="@{/song/update/{id}/(id=${song.id})}">EDIT</a></td>
                 <td><a th:href="@{/song/delete/{id}/(id=${song.id})}">DELETE</a></td>
@@ -62,13 +62,14 @@
 </div>
 </tr>
 </table>
-<div sec:authorize="hasRole('ADMIN')">
+
+<p sec:authorize="hasRole('ROLE_ADMIN')">
     <p> Back o Main<a th:href="@{/welcomeAd}"> Main </a>
     </p>
-</div>
-<div sec:authorize="hasRole('USER')">
+</p>
+<p sec:authorize="hasRole('USER')">
     <p> Back o Main<a th:href="@{/welcome}"> Main </a>
     </p>
-</div>
+</p>
 </body>
 </html>

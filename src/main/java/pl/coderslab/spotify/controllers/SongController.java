@@ -4,14 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import pl.coderslab.spotify.entity.Album;
-import pl.coderslab.spotify.entity.Author;
-import pl.coderslab.spotify.entity.Category;
-import pl.coderslab.spotify.entity.Song;
-import pl.coderslab.spotify.repository.AlbumRepository;
-import pl.coderslab.spotify.repository.AuthorRepository;
-import pl.coderslab.spotify.repository.CategoryRepository;
-import pl.coderslab.spotify.repository.SongRepository;
+import pl.coderslab.spotify.entity.*;
+import pl.coderslab.spotify.repository.*;
 
 import javax.validation.Valid;
 import java.util.Collection;
@@ -25,12 +19,14 @@ public class SongController {
     private final AuthorRepository authorRepository;
     private final CategoryRepository categoryRepository;
     private final AlbumRepository albumRepository;
+    private final LyricsRepository lyricsRepository;
 
-    public SongController(SongRepository songRepository, AuthorRepository authorRepository, CategoryRepository categoryRepository, AlbumRepository albumRepository) {
+    public SongController(SongRepository songRepository, AuthorRepository authorRepository, CategoryRepository categoryRepository, AlbumRepository albumRepository, LyricsRepository lyricsRepository) {
         this.songRepository = songRepository;
         this.authorRepository = authorRepository;
         this.categoryRepository = categoryRepository;
         this.albumRepository = albumRepository;
+        this.lyricsRepository = lyricsRepository;
     }
 
     //add
@@ -78,6 +74,14 @@ public class SongController {
     }
 
 
+    //addLyricsToSong
+
+    @ModelAttribute("lyrics")
+    public Collection<Lyrics> populateLyrics() {
+        List<Lyrics> lyrics = lyricsRepository.findAll();
+        return lyrics;
+    }
+
     //listOfSongs
 
     @GetMapping("/listSongs")
@@ -92,9 +96,20 @@ public class SongController {
     @GetMapping("/byCategory")
 
     public String findByCategory(@RequestParam String category, Model model) {
-        List<Song> songs = songRepository.findSongsbyCategory(category);
+        long id = categoryRepository.findSongsbyCategory(category);
+        List<Song> songs = songRepository.findSongsbyCategory(id);
         model.addAttribute("songs", songs);
         return "song/viewSongsbySearch";
     }
 
+
+    //byRating
+
+    @GetMapping("/byRating")
+
+    public String findByRating(@RequestParam String rating, Model model) {
+        List<Song> songs = songRepository.findSongByRating(rating);
+        model.addAttribute("songs", songs);
+        return "song/viewSongsbySearch";
+    }
 }

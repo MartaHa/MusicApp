@@ -47,6 +47,16 @@
                 </option>
             </select>
         </div>
+        <div>
+            <label th:for="album">Choose Lyrics:</label>
+            <select class="form-control" name="album" id="lyrics">
+                <option value="0">Lyrics</option>
+                <option th:each="lyric : ${lyrics}"
+                        th:value="${lyric.id}"
+                        th:text="${lyric.songText}">
+                </option>
+            </select>
+        </div>
         <input type="hidden" th:field="*{id}"/>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

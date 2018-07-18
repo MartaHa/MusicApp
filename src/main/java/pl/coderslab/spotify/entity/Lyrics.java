@@ -12,8 +12,9 @@ public class Lyrics {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idd;
-    private String songtext;
+    private Long id;
+    private String title;
+    private String songText;
     @OneToOne
     private Song song;
 }
