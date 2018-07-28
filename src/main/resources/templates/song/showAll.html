@@ -63,13 +63,13 @@
 </tr>
 </table>
 
-<p sec:authorize="hasRole('ROLE_ADMIN')">
+<div sec:authorize="hasRole('ADMIN')">
     <p> Back o Main<a th:href="@{/welcomeAd}"> Main </a>
     </p>
-</p>
-<p sec:authorize="hasRole('USER')">
+</div>
+<div sec:authorize="hasRole('USER')">
     <p> Back o Main<a th:href="@{/welcome}"> Main </a>
     </p>
-</p>
+</div>
 </body>
 </html>

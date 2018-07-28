@@ -15,6 +15,7 @@ public class Lyrics {
     private Long id;
     private String title;
     private String songText;
+
     @OneToOne
     private Song song;
 }

@@ -10,7 +10,7 @@ import pl.coderslab.spotify.repository.LyricsRepository;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/lyric")
+@RequestMapping("/lyrics")
 public class LyricController {
 
 

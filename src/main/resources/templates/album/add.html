@@ -8,7 +8,7 @@
 <body>
 <h1>Add an Album</h1>
 <div class="card-body">
-    <form th:action="@{/album/add}" method="post" th:object="${albu,}">
+    <form th:action="@{/album/add}" method="post" th:object="${album}">
         <div>
             <label th:for="title"> Title</label>
             <p th:input type="text" placeholder=" Title">
