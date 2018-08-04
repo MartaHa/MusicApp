@@ -26,13 +26,13 @@ public class LoginController {
     //addUser
 
 
-    @GetMapping("/add")
+    @GetMapping("/registerUser")
     public String showFormUser(Model model) {
         model.addAttribute("user", new User());
         return "registerUser";
     }
 
-    @PostMapping("/add")
+    @PostMapping("/registerUser")
 
     public String perform(@ModelAttribute @Valid User user, String role, BindingResult result) {
         if (result.hasErrors()) {
