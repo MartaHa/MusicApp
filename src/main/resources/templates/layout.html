@@ -41,14 +41,23 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item mx-0 mx-lg-1">
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" th:href="@{/login}">Log in</a>
+                    <div sec:authorize="hasRole('USER')">
+                        <a class="nav-link js-scroll-trigger"th:href="@{/welcome}"> Main</a>
+                    </div>
+                    <div sec:authorize="hasRole('ADMIN')">
+                        <a class="nav-link js-scroll-trigger"th:href="@{/welcomeAd}"> Main</a>
+                    </div>
                 </li>
                 <li class="nav-item mx-0 mx-lg-1">
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" th:href="@{/registerAdmin}">Register as Admin</a>
+                    <div sec:authorize="hasRole('USER')">
+                        <a class="nav-link js-scroll-trigger"th:href="@{/user/showUser}"> Profile</a>
+                    </div>
+                    <div sec:authorize="hasRole('ADMIN')">
+                        <a class="nav-link js-scroll-trigger"th:href="@{/admin/showAdmin}">Profile </a>
+                    </div>
                 </li>
                 <li class="nav-item mx-0 mx-lg-1">
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"th:href="@{/registerUser}">Register as User</a>
-                </li>
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"th:href="@{/logout}">Logout</a>
             </ul>
         </div>
     </div>
