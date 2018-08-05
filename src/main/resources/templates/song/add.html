@@ -1,8 +1,9 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="~{layout}">
 <body>
-
+<section layout:fragment="content">
 <h1>Add a song</h1>
 
 <div>
@@ -62,8 +63,6 @@
     </form>
 </div>
 </div>
-<div>
-    <a th:href="@{/welcomeAd}"> Back to Main Page </a>
-</div>
+</section>
 </body>
 </html>

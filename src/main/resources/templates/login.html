@@ -1,6 +1,9 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<body>
+<section layout:fragment="content">
 <body>
 
     <h1>User login page</h1>
@@ -10,6 +13,6 @@
         <div><input type="submit" value="Sign In"/></div>
     </form>
 
-</
+</section>
 </body>
 </html>

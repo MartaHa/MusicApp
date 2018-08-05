@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="~{layout}">
 <body>
+<section layout:fragment="content">
 <h1>Your profile:</h1>
 <div class="card-body">
     <form th:action="@{/registerUser}" method="post" th:object="${user}">
@@ -50,5 +48,6 @@
     </form>
 </div>
 </div>
+</section>
 </body>
 </html>

@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="~{layout}">
 <body>
+<section layout:fragment="content">
 <h1>Update information </h1>
 <div class="card-body">
     <form th:action="@{/author/update}" method="post" th:object="${author}">
@@ -29,5 +27,7 @@
 </form>
 <div>
 <a th:href="@{/author/showAll}"> Back to List </a>
+</div>
+</section>
 </body>
 </html>

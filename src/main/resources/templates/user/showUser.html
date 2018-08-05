@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="~{layout}">
 <body>
+<section layout:fragment="content">
 <table>
     <tr>
         <th></th>
@@ -33,5 +31,6 @@
     </tr>
 </table>
 </form>
+</section>
 </body>
 </html>

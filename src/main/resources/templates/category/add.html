@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="~{layout}">
 <body>
+<section layout:fragment="content">
 <h1>Form</h1>
 <div class="card-body">
     <form th:action="@{/category/add}" method="post" th:object="${category}">
@@ -27,5 +25,6 @@
 </div>
 </div>
     <a th:href="@{/category/showAll}"> Back to List </a>
+</section>
 </body>
 </html>
