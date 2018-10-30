@@ -41,19 +41,3 @@ To-do list:
 ## Status
 Project is: _in progress_,
 
-
-
-
-
-
-
-
-
-
-
-Technologies I used:  
--JAVA,  
--Spring Boot,
--Spring Data JPA,  
--Hibernate,  
--Thymeleaf,    
